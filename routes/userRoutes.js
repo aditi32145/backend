@@ -3,6 +3,12 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../config/db");
 
+// Test route to check if users API is working
+router.get("/", (req, res) => {
+  res.json({ success: true, message: "User routes are working 🚀" });
+});
+
+
 // ✅ Get all users (include vip, coin, business, status)
 router.get("/all-users", async (req, res) => {
   try {
