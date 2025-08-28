@@ -1,3 +1,4 @@
+// server.js
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
@@ -41,12 +42,4 @@ app.get("/", (req, res) => {
 });
 
 
-router.get("/home-data", async (req, res) => {
-  try {
-    const result = await db.query("SELECT * FROM home_data");
-    res.json({ success: true, data: result.rows });
-  } catch (error) {
-    console.error(error);   // 👈 check logs in Render
-    res.status(500).json({ success: false, message: "Server error" });
-  }
-});
+
