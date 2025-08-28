@@ -39,3 +39,14 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
   res.json({ success: true, message: "Backend is running 🚀" });
 });
+
+
+router.get("/home-data", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM home_data");
+    res.json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error(error);   // 👈 check logs in Render
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
